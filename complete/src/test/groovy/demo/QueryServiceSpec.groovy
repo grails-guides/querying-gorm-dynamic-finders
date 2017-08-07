@@ -62,9 +62,6 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
     }
 
     def 'test how many unique games were played'() {
-        expect:
-        Match.count() == 31     // total matches played
-
         when:
         def uniqueGamesPlayed = service.findUniqueGamesPlayed()
 
@@ -73,10 +70,11 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
     }
 
     def 'test how many games are in progress'() {
-        expect:
-        service.findMatchesInProgress().size() == 9
+        when:
+        def matchesInProgress = service.findMatchesInProgress()
+
+        then:
+        matchesInProgress.size() == 9
     }
-
-
 
 }
