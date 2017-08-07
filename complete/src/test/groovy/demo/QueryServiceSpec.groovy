@@ -1,17 +1,14 @@
 package demo
 
-import grails.test.mixin.Mock
-import grails.test.mixin.TestFor
-import org.junit.Before
+import grails.testing.gorm.DataTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
-import spock.lang.Unroll
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
-@TestFor(QueryService)
-@Mock([Category, Game, Match, Mechanic, Player, Score])
-class QueryServiceSpec extends Specification {
+class QueryServiceSpec extends Specification implements ServiceUnitTest<QueryService>, DataTest {
+
+    void setupSpec() {
+        mockDomains Category, Game, Match, Mechanic, Player, Score
+    }
 
     def setup() {
         DemoData.initialize()
