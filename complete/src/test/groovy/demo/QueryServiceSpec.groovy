@@ -65,16 +65,6 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
         areEqualSets games*.name, ["Gloomhaven", "Power Grid"]
     }
 
-    def 'test find games with minimum players other than 2'() {
-        when:
-        def games = service.queryGamesWithMinPlayersOtherThanTwo()
-
-        then:
-        areEqualSets games*.name,
-                ["Gloomhaven", "La Granja", "Flash Point: Fire Rescue", "Incan Gold",
-                 "Witch's Brew", "Coup: Rebellion G54"]
-    }
-
     def 'test find games played between March 21st and March 25th inclusive'() {
         given:
         def startDate = new Date(117, 2, 21)
@@ -225,6 +215,29 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
                 ["Small World", "Fresco", "Flash Point: Fire Rescue", "Lost Cities",
                  "Incan Gold", "Witch's Brew", "Coup: Rebellion G54", "Havana",
                  "Odin's Ravens", "SET", "Metro"]
+    }
+
+    def 'test how many games are not considered strategy'() {
+        expect:
+        service.queryHowManyGamesNotConsideredStrategy() == 9
+    }
+
+    private static listOwnedGames() {
+        Player.list().inject([] as Set) { owned, player ->
+            owned.addAll player.library
+            owned
+        } as List
+    }
+
+    def 'test what games are not owned by anybody'() {
+        given:
+        def ownedGames = listOwnedGames()
+
+        when:
+        def unownedGames = service.queryGamesOtherThan(ownedGames)
+
+        then:
+        areEqualSets unownedGames*.name, ["Metro", "Tournay"]
     }
 
 }

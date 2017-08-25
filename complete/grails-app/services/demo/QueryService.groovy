@@ -44,14 +44,6 @@ class QueryService {
         //Game.countByRatingGreaterThanEquals(rating)
     }
 
-    def queryGamesWithMinPlayersOtherThanTwo() {
-        Game.list().findAll {
-            it.minPlayers != 2
-        }
-
-        //Game.findAllByMinPlayersNotEqual(2)
-    }
-
     def queryMatchesPlayedBetweenDates(Date startDate, Date finishDate) {
         Match.list().findAll {
             startDate <= it.started && it.started <= finishDate
@@ -145,7 +137,23 @@ class QueryService {
             it.family || it.party
         }
 
-        Game.findAllByFamilyOrParty(true, true)
+        //Game.findAllByFamilyOrParty(true, true)
+    }
+
+    def queryHowManyGamesNotConsideredStrategy() {
+        Game.list().count {
+            !it.strategy
+        }
+
+        //Game.countByStrategyNotEqual(true)
+    }
+
+    def queryGamesOtherThan(List<Game> games) {
+        Game.list().findAll {
+            !(it in games)
+        }
+
+        //Game.findAllByNameNotInList(games*.name)
     }
 
 }
