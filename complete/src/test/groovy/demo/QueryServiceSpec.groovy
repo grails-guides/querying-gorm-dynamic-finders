@@ -29,6 +29,13 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
         (a as Set) == (b as Set)
     }
 
+    private static getOwnedGames() {
+        Player.list().inject([].toSet()) { owned, player ->
+            owned.addAll player.library
+            owned
+        } as List
+    }
+
     def 'test that demo data is loaded'() {
         expect:
         Category.count() == 33
@@ -222,17 +229,7 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
         service.queryHowManyGamesNotConsideredStrategy() == 9
     }
 
-    private static listOwnedGames() {
-        Player.list().inject([] as Set) { owned, player ->
-            owned.addAll player.library
-            owned
-        } as List
-    }
-
     def 'test what games are not owned by anybody'() {
-        given:
-        def ownedGames = listOwnedGames()
-
         when:
         def unownedGames = service.queryGamesOtherThan(ownedGames)
 
