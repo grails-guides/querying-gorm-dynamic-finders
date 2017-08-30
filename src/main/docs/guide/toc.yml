@@ -4,5 +4,5 @@ gettingStarted:
   howto: How to complete the guide
 testingTheService:
   title: Testing the Service
-runningTheApp:
-  title: Running the Application
+updatingTheService:
+  title: Updating the Service
