@@ -11,15 +11,6 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
         mockDomains Category, Game, Match, Mechanic, Player, Score
     }
 
-    // Without dynamic finders or better:
-    // .get(id)
-    // .getAll(id, id, ...)
-    // .list()  // all
-    // .list(offset, max, sort, order)
-
-    // : pagination (offset, max)
-    // : sorting (sort, order)
-
     def setup() {
         DemoData.initialize()
     }
