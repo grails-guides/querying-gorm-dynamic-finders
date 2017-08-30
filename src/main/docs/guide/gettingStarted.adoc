@@ -1,1 +1,4 @@
-In this guide you are going to...
+In this guide, you are going to update a Grails service to more efficiently query a
+database. The service methods currently load all records from a table and search
+through them in-memory; you will change those methods to use GORM Dynamic Finders,
+which are more efficient all around.
