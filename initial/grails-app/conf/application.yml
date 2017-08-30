@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: querying.gorm.dynamic.finders
+        defaultPackage: demo
     spring:
         transactionManagement:
             proxies: false

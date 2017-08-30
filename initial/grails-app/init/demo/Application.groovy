@@ -1,4 +1,4 @@
-package querying.gorm.dynamic.finders
+package demo
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration
