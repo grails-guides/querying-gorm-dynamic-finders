@@ -1,0 +1,6 @@
+The first part of any dynamic finder will be one of three things:
+
+findBy:: Use this when you expect only one result (or want only the first result of many).
+findAllBy:: Use this when you expect multiple results.
+countBy:: Use this when you want only a count of matching results rather than the data itself.
+

@@ -6,3 +6,4 @@ testingTheService:
   title: Testing the Service
 updatingTheService:
   title: Updating the Service
+  findByVsFindAllByVsCountBy: findBy vs. findAllBy vs. countBy
