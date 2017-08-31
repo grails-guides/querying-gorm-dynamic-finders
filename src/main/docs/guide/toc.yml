@@ -7,3 +7,4 @@ testingTheService:
 updatingTheService:
   title: Updating the Service
   findByName: Find a Single Instance By Name
+  queryParameters: Parameterizing Queries

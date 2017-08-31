@@ -10,5 +10,35 @@ name matches the parameter.
     }
 ----
 
-This is highly inefficient code! The `getAll` method on `Game` does exactly what it
-sounds like: it fetches all of the records from the database into memory.
+The `all` property on `Game` does exactly what it sounds like: it fetches all of the instances
+from the database into memory. This terrible implementation fetches all of the instances
+when only one is needed; this is highly inefficient code! Let's get exactly the one instance we
+need using a dynamic finder.
+
+Every dynamic query starts with a prefix. In this case, since we only expect one matching instance, we can
+use `findBy`, which will return either a matching instance or a `null` if none is found.
+
+NOTE: `findBy` can also be used to retrieve only the first of many matching instances, but there are
+other, clearer means to accomplish that task. These are described in <<queryParameters,Parameterizing Queries>>.
+
+After determining the prefix, next we need the property to match against. The `Game` domain class
+has a `name` property that the inefficient implementation used; by appending (using camel-case) the
+property name to the prefix, we can create the dynamic finder to find the game.
+[source,groovy]
+----
+    def queryGame(String name) {
+        Game.findByName(...)
+    }
+----
+
+What about arguments for the method? In most cases, for every property name in the method name (e.g.
+`Name` in `findByName`), there is a corresponding argument in the method call. So the final, efficient
+implementation of `queryGame` is:
+[source,groovy]
+----
+    def queryGame(String name) {
+        Game.findByName(name)
+    }
+----
+
+Change the implementation and run the tests to see that they still pass.
