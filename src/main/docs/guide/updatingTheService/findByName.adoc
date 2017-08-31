@@ -1,13 +1,10 @@
 Our first method to update is `QueryService.queryGame` which takes a single `name` parameter.
 The existing code loads all instances of the `Game` domain class, and searches for those whose
 name matches the parameter.
+
 [source,groovy]
 ----
-    def queryGame(String name) {
-        Game.all.find {
-            it.name == name
-        }
-    }
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findByName]
 ----
 
 The `all` property on `Game` does exactly what it sounds like: it fetches all of the instances
@@ -15,30 +12,27 @@ from the database into memory. This terrible implementation fetches all of the i
 when only one is needed; this is highly inefficient code! Let's get exactly the one instance we
 need using a dynamic finder.
 
-Every dynamic query starts with a prefix. In this case, since we only expect one matching instance, we can
-use `findBy`, which will return either a matching instance or a `null` if none is found.
+Every dynamic query starts with a prefix. In this case, since we expect to match only one game
+instance (i.e. searching `Game` by its `name` property, which is unique), we can use `findBy`,
+which will return either a matching instance or a `null` if no matching instance is found.
 
 NOTE: `findBy` can also be used to retrieve only the first of many matching instances, but there are
-other, clearer means to accomplish that task. These are described in <<queryParameters,Parameterizing Queries>>.
+other, clearer means to accomplish that task, described in <<queryParameters,Parameterizing Queries>>.
 
 After determining the prefix, next we need the property to match against. The `Game` domain class
 has a `name` property that the inefficient implementation used; by appending (using camel-case) the
-property name to the prefix, we can create the dynamic finder to find the game.
-[source,groovy]
-----
-    def queryGame(String name) {
-        Game.findByName(...)
-    }
-----
+property name to the prefix, we can create the dynamic finder to find the desired game.
 
-What about arguments for the method? In most cases, for every property name in the method name (e.g.
-`Name` in `findByName`), there is a corresponding argument in the method call. So the final, efficient
-implementation of `queryGame` is:
+At the same time we add a property name to the dynamic finder method _name_, we should also add an
+argument to the dynamic finder method _call_; in this case, we want to use the `name` parameter
+provided by the `queryGame` method. So the final, efficient implementation of `queryGame` is:
 [source,groovy]
 ----
-    def queryGame(String name) {
-        Game.findByName(name)
-    }
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findByName]
 ----
 
 Change the implementation and run the tests to see that they still pass.
+
+NOTE: When you append a property name to a dynamic finder method, you also append a corresponding
+argument to the method call **in most cases**. The few cases that differ in this respect will be
+pointed out in later sections of this guide.
