@@ -5,7 +5,7 @@ class Game {
     Integer minPlayers
     Integer maxPlayers
     Integer averageDuration     // in minutes
-    BigDecimal rating       // from 0.0 to 10.0
+    BigDecimal rating           // from 0.0 to 10.0
     Boolean family = false
     Boolean party = false
     Boolean thematic = false
@@ -14,7 +14,7 @@ class Game {
     static hasMany = [categories: Category, mechanics: Mechanic]
 
     static constraints = {
-        name blank: false
+        name blank: false, unique: true     // names are unique, at least, for this demo
         minPlayers min: 1
         maxPlayers validator: { val, obj -> val >= obj.minPlayers }
         averageDuration min: 1
