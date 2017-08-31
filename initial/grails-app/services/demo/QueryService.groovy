@@ -3,12 +3,14 @@ package demo
 import org.apache.commons.lang.StringUtils
 
 class QueryService {
-    
+
+    // tag::findByName[]
     def queryGame(String name) {
         Game.all.find {
             it.name == name
         }
     }
+    // end::findByName[]
 
     def queryGamesWithAverageDuration(Integer averageDuration) {
         Game.all.findAll {
