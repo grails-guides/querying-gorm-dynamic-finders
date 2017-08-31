@@ -1,0 +1,14 @@
+Our first method to update is `QueryService.queryGame` which takes a single `name` parameter.
+The existing code loads all instances of the `Game` domain class, and searches for those whose
+name matches the parameter.
+[source,groovy]
+----
+    def queryGame(String name) {
+        Game.all.find {
+            it.name == name
+        }
+    }
+----
+
+This is highly inefficient code! The `getAll` method on `Game` does exactly what it
+sounds like: it fetches all of the records from the database into memory.

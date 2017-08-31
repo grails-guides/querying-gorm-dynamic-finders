@@ -6,4 +6,4 @@ testingTheService:
   title: Testing the Service
 updatingTheService:
   title: Updating the Service
-  findByVsFindAllByVsCountBy: findBy vs. findAllBy vs. countBy
+  findByName: Find a Single Instance By Name

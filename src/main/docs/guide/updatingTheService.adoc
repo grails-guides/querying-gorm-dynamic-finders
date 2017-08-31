@@ -5,12 +5,12 @@ http://groovy-lang.org/metaprogramming.html#_propertymissing[`propertyMissing`] 
 attempt to call one. Grails will then examine the method name you use and generate an appropriate
 implementation, including the corresponding database query.
 
-Dynamic finders read like English commands. For example, if I want to find all books published between
-2001 and 2012, my query might look like this:
+Dynamic finders read like English commands. For example, if I want to find all the board games with an
+average play duration between 30 and 90 minutes, it might look like this:
 
 [source,groovy]
 ----
-def books = Book.findAllByYearPublishedBetween(2001, 2012)
+def games = Game.findAllByAverageDurationBetween(30, 90)
 ----
 
 This guide will explore ways to build dynamic finders by updating all the methods in
