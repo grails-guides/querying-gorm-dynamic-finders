@@ -10,11 +10,12 @@ include::initial/grails-app/services/demo/QueryService.groovy[tag=findByName]
 The `all` property on `Game` does exactly what it sounds like: it fetches all of the instances
 from the database into memory. This terrible implementation fetches all of the instances
 when only one is needed; this is highly inefficient code! Let's get exactly the one instance we
-need using a dynamic finder.
+want (i.e. the one with the provided name) using a dynamic finder.
 
-Every dynamic query starts with a prefix. In this case, since we expect to match only one game
-instance (i.e. searching `Game` by its `name` property, which is unique), we can use `findBy`,
-which will return either a matching instance or a `null` if no matching instance is found.
+Every dynamic query starts with a prefix. In this case, since we expect to find only one `Game`
+instance (i.e. because the `name` property of the `Game` domain class is constrained to be unique),
+we can use `findBy`, which will return either a matching instance or a `null` if no matching
+instance is found.
 
 NOTE: `findBy` can also be used to retrieve only the first of many matching instances, but there are
 other, clearer means to accomplish that task, described in <<queryParameters,Parameterizing Queries>>.
