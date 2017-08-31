@@ -44,7 +44,7 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
         then:
         game.minPlayers == minPlayers
         game.maxPlayers == maxPlayers
-        game.aveDuration == aveDuration
+        game.averageDuration == aveDuration
 
         where:
         name           | minPlayers | maxPlayers | aveDuration

@@ -1,8 +1,9 @@
 package demo
 
-import org.apache.commons.lang.StringUtils
-
 class QueryService {
+
+    // Throughout this service, all of the inefficient "queries" remain but are commented so
+    // you can compare the original, inefficient solution to the improved, efficient query.
 
     def queryGame(String name) {
         //Game.all.find {
@@ -14,18 +15,18 @@ class QueryService {
 
     def queryGamesWithAverageDuration(Integer averageDuration) {
         //Game.all.findAll {
-        //    it.aveDuration == averageDuration
+        //    it.averageDuration == averageDuration
         //}
 
-        Game.findAllByAveDuration(averageDuration)
+        Game.findAllByAverageDuration(averageDuration)
     }
 
     def queryGamesExpectedShorterThan(Integer duration) {
         //Game.all.findAll {
-        //    it.aveDuration <= duration
+        //    it.averageDuration <= duration
         //}
 
-        Game.findAllByAveDurationLessThanEquals(duration)
+        Game.findAllByAverageDurationLessThanEquals(duration)
     }
 
     def queryGamesRatedMoreThan(BigDecimal rating) {
