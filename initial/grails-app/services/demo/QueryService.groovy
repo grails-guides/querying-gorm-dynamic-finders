@@ -12,13 +12,13 @@ class QueryService {
 
     def queryGamesWithAverageDuration(Integer averageDuration) {
         Game.all.findAll {
-            it.aveDuration == averageDuration
+            it.averageDuration == averageDuration
         }
     }
 
     def queryGamesExpectedShorterThan(Integer duration) {
         Game.all.findAll {
-            it.aveDuration <= duration
+            it.averageDuration <= duration
         }
     }
 
