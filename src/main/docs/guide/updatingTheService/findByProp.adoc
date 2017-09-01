@@ -1,6 +1,7 @@
-Our first method to update is `QueryService.queryGame` which takes a single `name` parameter.
-The existing code loads all instances of the `Game` domain class, and searches for those whose
-name matches the parameter.
+The first method to update is `QueryService.queryGame` which takes a single `name` parameter.
+The existing code loads all instances of the `Game` domain class, and searches for the single
+instance whose name matches the parameter. (We only expect to find one, since the `name` property
+of `Game` is unique.)
 
 [source,groovy]
 ----
