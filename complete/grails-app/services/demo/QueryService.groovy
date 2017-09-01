@@ -2,11 +2,11 @@ package demo
 
 class QueryService {
 
-    // tag::findByName[]
+    // tag::findByProp[]
     def queryGame(String name) {
         Game.findByName(name)
     }
-    // end::findByName[]
+    // end::findByProp[]
 
     // tag::findAllByProp[]
     def queryGamesWithAverageDuration(Integer averageDuration) {

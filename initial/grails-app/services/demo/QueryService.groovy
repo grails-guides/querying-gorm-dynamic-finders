@@ -4,13 +4,13 @@ import org.apache.commons.lang.StringUtils
 
 class QueryService {
 
-    // tag::findByName[]
+    // tag::findByProp[]
     def queryGame(String name) {
         Game.all.find {
             it.name == name
         }
     }
-    // end::findByName[]
+    // end::findByProp[]
 
     // tag::findAllByProp[]
     def queryGamesWithAverageDuration(Integer averageDuration) {
