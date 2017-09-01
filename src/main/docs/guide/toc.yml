@@ -10,4 +10,5 @@ updatingTheService:
   findAllByProp: Find Many By Value
   findByInequality: Find By Inequality
   countingMatches: Counting Matching Instances
+  findByRange: Find By Value Range
   queryParameters: Parameterizing Queries

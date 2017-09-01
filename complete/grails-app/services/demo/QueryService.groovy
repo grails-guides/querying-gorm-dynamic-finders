@@ -32,17 +32,17 @@ class QueryService {
     }
     // end::countByGreaterThan[]
 
-	// tag::[]
-	def queryMatchesPlayedBetweenDates(Date startDate, Date finishDate) {
+	// tag::findByBetween[]
+    def queryMatchesPlayedBetweenDates(Date startDate, Date finishDate) {
         Match.findAllByStartedBetween(startDate, finishDate)
     }
-	// end::[]
+	// end::findByBetween[]
 
-    // tag::[]
-	def queryHowManyScoresWithinRange(Range range) {
+    // tag::findByRange[]
+    def queryHowManyScoresWithinRange(Range range) {
         Score.countByScoreInRange(range)
     }
-	// end::[]
+	// end::findByRange[]
 
     // tag::[]
 	def queryPlayersWithLastName(String lastName) {
