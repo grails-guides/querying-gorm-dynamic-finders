@@ -8,9 +8,11 @@ class QueryService {
     }
     // end::findByName[]
 
+    // tag::findAllByProp[]
     def queryGamesWithAverageDuration(Integer averageDuration) {
         Game.findAllByAverageDuration(averageDuration)
     }
+    // end::findAllByProp[]
 
     def queryGamesExpectedShorterThan(Integer duration) {
         Game.findAllByAverageDurationLessThanEquals(duration)

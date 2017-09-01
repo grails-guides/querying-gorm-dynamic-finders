@@ -12,11 +12,13 @@ class QueryService {
     }
     // end::findByName[]
 
+    // tag::findAllByProp[]
     def queryGamesWithAverageDuration(Integer averageDuration) {
         Game.all.findAll {
             it.averageDuration == averageDuration
         }
     }
+    // end::findAllByProp[]
 
     def queryGamesExpectedShorterThan(Integer duration) {
         Game.all.findAll {

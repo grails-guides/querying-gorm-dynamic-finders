@@ -6,5 +6,6 @@ testingTheService:
   title: Testing the Service
 updatingTheService:
   title: Updating the Service
-  findByName: Find a Single Instance By Name
+  findByName: Find One Instance By Value
+  findAllByProp: Find Multiple Instances By Value
   queryParameters: Parameterizing Queries
