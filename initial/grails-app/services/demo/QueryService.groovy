@@ -50,15 +50,15 @@ class QueryService {
         }
     }
 
-    def queryPlayersWithLastName(String lastName) {
-        Player.all.findAll {
-            it.name.endsWith " ${lastName}"
-        }
-    }
-
     def queryHowManyScoresWithinRange(Range range) {
         Score.all.count {
             it.score in range
+        }
+    }
+
+    def queryPlayersWithLastName(String lastName) {
+        Player.all.findAll {
+            it.name.endsWith " ${lastName}"
         }
     }
 

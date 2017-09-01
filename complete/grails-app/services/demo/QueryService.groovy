@@ -36,12 +36,12 @@ class QueryService {
         Match.findAllByStartedBetween(startDate, finishDate)
     }
 
-    def queryPlayersWithLastName(String lastName) {
-        Player.findAllByNameLike("% ${lastName}")
-    }
-
     def queryHowManyScoresWithinRange(Range range) {
         Score.countByScoreInRange(range)
+    }
+
+    def queryPlayersWithLastName(String lastName) {
+        Player.findAllByNameLike("% ${lastName}")
     }
 
     def queryMechanicsContaining(String text) {
