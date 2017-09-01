@@ -215,9 +215,15 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
                  "Odin's Ravens", "SET", "Metro"]
     }
 
-    def 'test how many games are not considered strategy'() {
-        expect:
-        service.queryHowManyGamesNotConsideredStrategy() == 9
+    def 'test what games are not considered strategy'() {
+        when:
+        def games = service.queryGamesNotConsideredStrategy()
+
+        then:
+        areEqualSets games*.name,
+                ["Star Wars: Rebellion", "Flash Point: Fire Rescue", "Lost Cities",
+                 "Space Hulk", "Runebound", "Last Night on Earth: The Zombie Game",
+                 "Thunder Alley", "Incan Gold", "SET"]
     }
 
     def 'test what games are not owned by anybody'() {

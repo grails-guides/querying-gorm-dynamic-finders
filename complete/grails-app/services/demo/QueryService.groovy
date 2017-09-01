@@ -14,6 +14,12 @@ class QueryService {
     }
     // end::findAllByProp[]
 
+    // tag::findAllNotEqual[]
+    def queryGamesNotConsideredStrategy() {
+        Game.findAllByStrategyNotEqual(true)
+    }
+    // end::findAllNotEqual[]
+
     // tag::findAllByLessThan[]
     def queryGamesExpectedShorterThan(Integer duration) {
         Game.findAllByAverageDurationLessThan(duration)
@@ -101,12 +107,6 @@ class QueryService {
     // tag::[]
 	def queryGamesConsideredFamilyOrParty() {
         Game.findAllByFamilyOrParty(true, true)
-    }
-	// end::[]
-
-    // tag::[]
-	def queryHowManyGamesNotConsideredStrategy() {
-        Game.countByStrategyNotEqual(true)
     }
 	// end::[]
 

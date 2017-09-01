@@ -54,7 +54,7 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
         "Witch's Brew" | 3          | 5          | 45
         "Gloomhaven"   | 1          | 4          | 120
     }
-    
+
     def 'test find games with average duration'() {
         when:
         def games = service.queryGamesWithAverageDuration(120)
@@ -215,9 +215,15 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
                  "Odin's Ravens", "SET", "Metro"]
     }
 
-    def 'test how many games are not considered strategy'() {
-        expect:
-        service.queryHowManyGamesNotConsideredStrategy() == 9
+    def 'test what games are not considered strategy'() {
+        when:
+        def games = service.queryGamesNotConsideredStrategy()
+
+        then:
+        areEqualSets games*.name,
+                ["Star Wars: Rebellion", "Flash Point: Fire Rescue", "Lost Cities",
+                 "Space Hulk", "Runebound", "Last Night on Earth: The Zombie Game",
+                 "Thunder Alley", "Incan Gold", "SET"]
     }
 
     def 'test what games are not owned by anybody'() {
