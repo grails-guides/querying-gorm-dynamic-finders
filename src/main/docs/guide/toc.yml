@@ -13,3 +13,4 @@ updatingTheService:
   findByRange: Find By Value Range
   findByStringComp: Find by Similar Strings
   queryParameters: Parameterizing Queries
+  dynamicFinderSummary: Summary of Dynamic Finders
