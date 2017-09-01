@@ -44,23 +44,23 @@ class QueryService {
     }
 	// end::findByRange[]
 
-    // tag::[]
-	def queryPlayersWithLastName(String lastName) {
+    // tag::findByLike[]
+    def queryPlayersWithLastName(String lastName) {
         Player.findAllByNameLike("% ${lastName}")
     }
-	// end::[]
+	// end::findByLike[]
 
-    // tag::[]
-	def queryMechanicsContaining(String text) {
+    // tag::findByIlike[]
+    def queryMechanicsContaining(String text) {
         Mechanic.findAllByNameIlike("%${text}%")
     }
-	// end::[]
+	// end::findByIlike[]
 
-    // tag::[]
-	def queryGamesMatching(String pattern) {
+    // tag::findByRlike[]
+    def queryGamesMatching(String pattern) {
         Game.findAllByNameRlike(pattern)      // Rlike: not universally supported
     }
-	// end::[]
+	// end::findByRlike[]
 
     // tag::[]
 	def queryHowManyMatchesInProgress() {

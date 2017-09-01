@@ -11,4 +11,5 @@ updatingTheService:
   findByInequality: Find By Inequality
   countingMatches: Counting Matching Instances
   findByRange: Find By Value Range
+  findByStringComp: Find by Similar Strings
   queryParameters: Parameterizing Queries
