@@ -83,7 +83,7 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
 
     def 'test games expected to last 30 minutes or shorter'() {
         when:
-        def games = service.queryGamesExpectedShorterThan(30)
+        def games = service.queryGamesExpectedShorterThan(40)
 
         then:
         areEqualSets games*.name,

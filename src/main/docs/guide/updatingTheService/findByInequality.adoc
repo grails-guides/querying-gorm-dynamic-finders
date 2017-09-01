@@ -1,0 +1,40 @@
+The previous methods searched for matching instances by value equality. Dynamic finders
+can search also by inequality... whether an instance property value is greater than or
+less than a desired target value.
+
+Let's look at `QueryService.queryGamesExpectedShorterThan`, which will return a list of
+games with an average duration shorter than the provided argument.
+[source,groovy]
+----
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllByLessThan]
+----
+
+Since we expect there might be more than one result, we still need to use the prefix
+`findAllBy`. And the property of interest is still `averageDuration`. But we need to
+specify a *comparator*: in this case, `LessThan`, since we want games with
+an average duration *less than* the argument. This comparator is appended after the
+property name, so our final, improved implementation is:
+[source,groovy]
+----
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllByLessThan]
+----
+
+There is a similar comparator when you need instances with property values *greater than* the
+supplied argument: use `GreaterThan`. For example, `QueryService.queryGamesRatedMoreThan` will
+find all games with a rating higher than the provided rating. The original implementation:
+
+[source,groovy]
+----
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllByGreaterThan]
+----
+
+Similar to the previous query, our dynamic finder will be called `findAllByRatingGreaterThan`.
+[source,groovy]
+----
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllByGreaterThan]
+----
+
+The `LessThan` and `GreaterThan` comparators are _strict_ inequality comparisons; that is,
+if the values compared are equal, the instance is *not* considered a match. If you need to
+also include equality, use the non-strict `LessThanEquals` and `GreaterThanEquals` comparators.
+

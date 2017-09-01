@@ -20,23 +20,29 @@ class QueryService {
     }
     // end::findAllByProp[]
 
+    // tag::findAllByLessThan[]
     def queryGamesExpectedShorterThan(Integer duration) {
         Game.all.findAll {
-            it.averageDuration <= duration
+            it.averageDuration < duration
         }
     }
+    // end::findAllByLessThan[]
 
+    // tag::findAllByGreaterThan[]
     def queryGamesRatedMoreThan(BigDecimal rating) {
         Game.all.findAll {
             it.rating > rating
         }
     }
+    // end::findAllByGreaterThan[]
 
+    // tag::countByGreaterThan[]
     def queryHowManyGamesRatedAtLeast(BigDecimal rating) {
         Game.all.count {
             it.rating >= rating
         }
     }
+    // end::countByGreaterThan[]
 
     def queryMatchesPlayedBetweenDates(Date startDate, Date finishDate) {
         Match.all.findAll {
