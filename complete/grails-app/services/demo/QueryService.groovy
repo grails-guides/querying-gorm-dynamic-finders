@@ -81,6 +81,24 @@ class QueryService {
 	// end::findByNotNull[]
 
     // tag::[]
+    def queryGamesForNames(List<String> names) {
+        Game.findAllByNameInList(names)
+    }
+    // end::[]
+
+    // tag::[]
+    def queryMatchesForGames(List<Game> games) {
+        Match.findAllByGameInList(games)
+    }
+    // end::[]
+
+    // tag::[]
+    def queryGamesOtherThan(List<Game> games) {
+        Game.findAllByNameNotInList(games*.name)
+    }
+    // end::[]
+
+    // tag::[]
 	def queryHowManyGamesSupportPlayerCount(Integer playerCount) {
         Game.countByMinPlayersLessThanEqualsAndMaxPlayersGreaterThanEquals(playerCount, playerCount)
     }
@@ -93,26 +111,9 @@ class QueryService {
 	// end::[]
 
     // tag::[]
-	def queryGamesForNames(List<String> names) {
-        Game.findAllByNameInList(names)
-    }
-	// end::[]
-
-    // tag::[]
-	def queryMatchesForGames(List<Game> games) {
-        Match.findAllByGameInList(games)
-    }
-	// end::[]
-
-    // tag::[]
 	def queryGamesConsideredFamilyOrParty() {
         Game.findAllByFamilyOrParty(true, true)
     }
 	// end::[]
 
-    // tag::[]
-	def queryGamesOtherThan(List<Game> games) {
-        Game.findAllByNameNotInList(games*.name)
-    }
-    // end::[]
 }

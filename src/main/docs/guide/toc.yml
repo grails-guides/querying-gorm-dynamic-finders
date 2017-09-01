@@ -13,5 +13,7 @@ updatingTheService:
   findByRange: Find By Value Range
   findByStringComp: Find by Similar Strings
   findByNull: Find By Null/Non-Null
+  findInList: Find Property In List
+  combinators: Combining Query Clauses
   queryParameters: Parameterizing Queries
   dynamicFinderSummary: Summary of Dynamic Finders
