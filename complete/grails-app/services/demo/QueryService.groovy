@@ -32,60 +32,87 @@ class QueryService {
     }
     // end::countByGreaterThan[]
 
-    def queryMatchesPlayedBetweenDates(Date startDate, Date finishDate) {
+	// tag::[]
+	def queryMatchesPlayedBetweenDates(Date startDate, Date finishDate) {
         Match.findAllByStartedBetween(startDate, finishDate)
     }
+	// end::[]
 
-    def queryHowManyScoresWithinRange(Range range) {
+    // tag::[]
+	def queryHowManyScoresWithinRange(Range range) {
         Score.countByScoreInRange(range)
     }
+	// end::[]
 
-    def queryPlayersWithLastName(String lastName) {
+    // tag::[]
+	def queryPlayersWithLastName(String lastName) {
         Player.findAllByNameLike("% ${lastName}")
     }
+	// end::[]
 
-    def queryMechanicsContaining(String text) {
+    // tag::[]
+	def queryMechanicsContaining(String text) {
         Mechanic.findAllByNameIlike("%${text}%")
     }
+	// end::[]
 
-    def queryGamesMatching(String pattern) {
+    // tag::[]
+	def queryGamesMatching(String pattern) {
         Game.findAllByNameRlike(pattern)      // Rlike: not universally supported
     }
+	// end::[]
 
-    def queryHowManyMatchesInProgress() {
+    // tag::[]
+	def queryHowManyMatchesInProgress() {
         Match.countByFinishedIsNull()
     }
+	// end::[]
 
-    def queryHowManyMatchesCompleted() {
+    // tag::[]
+	def queryHowManyMatchesCompleted() {
         Match.countByFinishedIsNotNull()
     }
+	// end::[]
 
-    def queryHowManyGamesSupportPlayerCount(Integer playerCount) {
+    // tag::[]
+	def queryHowManyGamesSupportPlayerCount(Integer playerCount) {
         Game.countByMinPlayersLessThanEqualsAndMaxPlayersGreaterThanEquals(playerCount, playerCount)
     }
+	// end::[]
 
-    def queryGamesSupportExactPlayerCount(Integer playerCount) {
+    // tag::[]
+	def queryGamesSupportExactPlayerCount(Integer playerCount) {
         Game.findAllByMinPlayersAndMaxPlayers(playerCount, playerCount)
     }
+	// end::[]
 
-    def queryGamesForNames(List<String> names) {
+    // tag::[]
+	def queryGamesForNames(List<String> names) {
         Game.findAllByNameInList(names)
     }
+	// end::[]
 
-    def queryMatchesForGames(List<Game> games) {
+    // tag::[]
+	def queryMatchesForGames(List<Game> games) {
         Match.findAllByGameInList(games)
     }
+	// end::[]
 
-    def queryGamesConsideredFamilyOrParty() {
+    // tag::[]
+	def queryGamesConsideredFamilyOrParty() {
         Game.findAllByFamilyOrParty(true, true)
     }
+	// end::[]
 
-    def queryHowManyGamesNotConsideredStrategy() {
+    // tag::[]
+	def queryHowManyGamesNotConsideredStrategy() {
         Game.countByStrategyNotEqual(true)
     }
+	// end::[]
 
-    def queryGamesOtherThan(List<Game> games) {
+    // tag::[]
+	def queryGamesOtherThan(List<Game> games) {
         Game.findAllByNameNotInList(games*.name)
     }
-
+    // end::[]
 }
