@@ -92,21 +92,21 @@ class QueryService {
     }
     // end::findByRlike[]
 
-    // tag::[]
+    // tag::findByNull[]
     def queryHowManyMatchesInProgress() {
         Match.all.count {
             it.finished == null
         }
     }
-    // end::[]
+    // end::findByNull[]
 
-    // tag::[]
+    // tag::findByNotNull[]
     def queryHowManyMatchesCompleted() {
         Match.all.count {
             it.finished != null
         }
     }
-    // end::[]
+    // end::findByNotNull[]
 
     // tag::[]
     def queryHowManyGamesSupportPlayerCount(Integer playerCount) {

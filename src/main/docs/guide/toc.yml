@@ -12,5 +12,6 @@ updatingTheService:
   countingMatches: Counting Matching Instances
   findByRange: Find By Value Range
   findByStringComp: Find by Similar Strings
+  findByNull: Find By Null/Non-Null
   queryParameters: Parameterizing Queries
   dynamicFinderSummary: Summary of Dynamic Finders
