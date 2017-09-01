@@ -61,8 +61,10 @@ In the following table, `prop` represents some property of a domain instance, wh
 
 |`Like`
 |`findAllByPropLike(val)`
-|No exact equivalent. Similar to `prop.endsWith(val)`, `prop.startsWith(val)`, `prop.contains(val)`, depending on search string.
-|Tests property matches using wildcard string comparison. Use `%` for wildcard. Case-sensitive.
+|No exact equivalent. Similar to `prop.endsWith(val)`, `prop.startsWith(val)`,
+ `prop.contains(val)`, depending on search string.
+|Tests property matches using wildcard string comparison. Use `%` for wildcard.
+ Case-sensitive.
 
 |`Ilike`
 |`findAllByPropIlike(val)`
@@ -108,3 +110,39 @@ dynamic finder.
 |`(age < 8) \|\| (age > 88)`
 |At least one expression must match for the instance to match.
 |===
+
+== Parameters
+
+Pagination and sorting are done by adding a final `Map` argument to any dynamic finder.
+The map may contain the following parameters:
+
+[%header, cols="1,4"]
+|===
+|Parameter
+|Purpose
+
+|`sort`
+|All matching instances are sorted according to the property specified.
+ Sorting is done _before_ the `offset` and `max` parameters are applied.
+
+|`order`
+|Sets the sorting order to either ascending/increasing (`'asc'`) or
+ descending/decreasing (`'desc'`).
+
+|`offset`
+|From all matching, sorted instances, `offset` specifies the index of the first
+ instance to be returned. Used for paginating results.
+
+|`max`
+|From all matching, sorted instances, `max` specifies the upper limit of how
+ many instances to return. Used for paginating results.
+|===
+
+For example, the following finds all games with an average duration between 30 and
+90 minutes, sorted by their average duration (`sort: 'averageDuration'`), starting
+with the longest (order: 'desc'), and returning only the first five
+(`offset: 0, max: 5`) results.
+```
+    Game.findAllByAverageDurationInRange(30..90,
+            [sort: 'averageDuration', order: 'desc', offset: 0, max: 5])
+```
