@@ -108,29 +108,29 @@ class QueryService {
     }
     // end::findByNotNull[]
 
-    // tag::[]
+    // tag::findStringInList[]
     def queryGamesForNames(List<String> names) {
         Game.all.findAll {
             it.name in names
         }
     }
-    // end::[]
+    // end::findStringInList[]
 
-    // tag::[]
+    // tag::findDomainInList[]
     def queryMatchesForGames(List<Game> games) {
         Match.all.findAll {
             it.game in games
         }
     }
-    // end::[]
+    // end::findDomainInList[]
 
-    // tag::[]
+    // tag::findNotInList[]
     def queryGamesOtherThan(List<Game> games) {
         Game.all.findAll {
             !(it in games)
         }
     }
-    // end::[]
+    // end::findNotInList[]
 
     // tag::[]
     def queryHowManyGamesSupportPlayerCount(Integer playerCount) {
