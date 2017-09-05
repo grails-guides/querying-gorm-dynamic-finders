@@ -98,22 +98,22 @@ class QueryService {
     }
     // end::findNotInList[]
 
-    // tag::[]
-	def queryHowManyGamesSupportPlayerCount(Integer playerCount) {
+    // tag::findCombinatorAnd[]
+    def queryHowManyGamesSupportPlayerCount(Integer playerCount) {
         Game.countByMinPlayersLessThanEqualsAndMaxPlayersGreaterThanEquals(playerCount, playerCount)
     }
-	// end::[]
+	// end::findCombinatorAnd[]
 
-    // tag::[]
-	def queryGamesSupportExactPlayerCount(Integer playerCount) {
+    // tag::findCombinatorAnd2[]
+    def queryGamesSupportExactPlayerCount(Integer playerCount) {
         Game.findAllByMinPlayersAndMaxPlayers(playerCount, playerCount)
     }
-	// end::[]
+	// end::findCombinatorAnd2[]
 
-    // tag::[]
-	def queryGamesConsideredFamilyOrParty() {
+    // tag::findCombinatorOr[]
+    def queryGamesConsideredFamilyOrParty() {
         Game.findAllByFamilyOrParty(true, true)
     }
-	// end::[]
+	// end::findCombinatorOr[]
 
 }
