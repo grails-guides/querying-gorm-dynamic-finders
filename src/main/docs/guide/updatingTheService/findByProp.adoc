@@ -17,8 +17,9 @@ Every dynamic finder starts with a prefix. Since we expect to find only one game
 the name is constrained to be unique), we can use `findBy`, which will
 return the matching instance if one is found or a `null` if no match is found.
 
-NOTE: `findBy` can also be used to retrieve only the first of many matching instances, but there are
-other, clearer means to accomplish that task, described in <<queryParameters,Parameterizing Queries>>.
+NOTE: `findBy` can also be used to retrieve only the first of many matching instances.
+However, you should consider adding a sort column, described in
+<<queryParameters,Parameterizing Queries>>, to make your query robust.
 
 After determining the prefix, next we need the property to match against. The `Game` domain class
 has a `name` property that the inefficient implementation used; by appending (using camel-case) the

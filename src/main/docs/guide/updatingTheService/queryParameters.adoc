@@ -36,9 +36,20 @@ Next, let's just show the first group of ten results. Add `offset`/`max` paramet
     def games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc', offset: 0, max: 10])
 ----
 
-Finally, assuming a user of the application clicked the `Next` button, we can modify the
-last call to show the second group of ten results.
+Assuming a user of the application clicked the `Next` button, we can modify the
+last call to show the next group of ten results by updating the `offset` value.
 [source,groovy]
 ----
     def games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc', offset: 10, max: 10])
 ----
+
+Finally, as was noted <<findByProp,earlier>>, the prefix `findBy` will return the first matching
+result of a query. For robust code, you should consider adding a `sort` parameter, or even replacing
+`findBy` with `findByAll` and using `max: 1` in your parameters. For example:
+[source,groovy]
+----
+    // This:
+    def bestTwoPlayerGame = Game.findByMinPlayerAndMaxPlayer(2, 2, [sort: 'rating', order: 'desc'])
+
+    // is equivalent to this:
+    def bestTwoPlayerGame = Game.findAllByMinPlayerAndMaxPlayer(2, 2, [sort: 'rating', order: 'desc', max: 1])

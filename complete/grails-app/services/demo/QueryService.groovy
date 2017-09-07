@@ -19,7 +19,7 @@ class QueryService {
         // General case: using the NotEqual comparator.
         Game.findAllByStrategyNotEqual(true)    // <1>
 
-        // Special case for booleans: using Boolean exceptional form.
+        // Special case: using exceptional form for Boolean properties.
         Game.findAllNotStrategy()    // <2>
     }
     // end::findAllNotEqual[]

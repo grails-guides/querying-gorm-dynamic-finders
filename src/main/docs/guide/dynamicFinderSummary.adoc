@@ -114,7 +114,7 @@ dynamic finder.
 |Both expressions must match for the instance to match.
 
 |`Or`
-|`findByAgeLessThanOrAgeGreaterThan(8,88)`
+|`findAllByAgeLessThanOrAgeGreaterThan(8,88)`
 |`(age < 8) \|\| (age > 88)`
 |At least one expression must match for the instance to match.
 |===
