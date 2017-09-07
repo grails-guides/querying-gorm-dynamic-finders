@@ -3,11 +3,12 @@ With any dynamic finder, beyond the arguments required by the properties/compara
 an additional `Map` argument can be added to manage sorting and pagination. (This argument
 map is the same used for the `list()` method.)
 
-To sort results as part of your query, use `sort` and `order`.
+To sort results as part of your query, use `sort`, `order`, and `ignoreCase`.
 
 * `sort` specifies the property to use to sort all instances.
 * `order` is a string that specifies whether the sort should be ascending/increasing (`asc`) or
   descending/decreasing (`desc`).
+* `ignoreCase` specifies whether case should be ignored during sorting.
 
 To paginate results as part of your query, use `offset` and `max`.
 
@@ -53,3 +54,9 @@ result of a query. For robust code, you should consider adding a `sort` paramete
 
     // is equivalent to this:
     def bestTwoPlayerGame = Game.findAllByMinPlayerAndMaxPlayer(2, 2, [sort: 'rating', order: 'desc', max: 1])
+----
+
+NOTE: There are a few parameters more parameters available than are listed here. Please
+refer to the documentation for
+http://docs.grails.org/latest/ref/Domain%20Classes/list.html[`list`] to see if they
+apply to your situation.

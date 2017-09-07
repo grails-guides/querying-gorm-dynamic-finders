@@ -124,26 +124,35 @@ dynamic finder.
 Pagination and sorting are done by adding a final `Map` argument to any dynamic finder.
 The map may contain the following parameters:
 
-[%header, cols="1,4"]
+[%header, cols="1,4,2"]
 |===
 |Parameter
 |Purpose
+|Default
 
 |`sort`
 |All matching instances are sorted according to the property specified.
  Sorting is done _before_ the `offset` and `max` parameters are applied.
+|No default; if not specified, results are unsorted.
 
 |`order`
 |Sets the sorting order to either ascending/increasing (`'asc'`) or
  descending/decreasing (`'desc'`).
+|`asc`
+
+|`ignoreCase`
+|Sorting is case-insensitive if `true`, case-sensitive if `false`.
+|`true`
 
 |`offset`
 |From all matching, sorted instances, `offset` specifies the index of the first
  instance to be returned. Used for paginating results.
+|`0`
 
 |`max`
 |From all matching, sorted instances, `max` specifies the upper limit of how
  many instances to return. Used for paginating results.
+|No default; if not specified, returns all results.
 |===
 
 For example, the following finds all games with an average duration between 30 and
