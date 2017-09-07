@@ -27,21 +27,18 @@ maximum number of players. Since we're changing the ordering (and not the condit
 included in the results), we add `sort`/`order` query parameters.
 [source,groovy]
 ----
-    def games = Game.findAllByStrategyAndMinPlayers(true, 2,
-            [sort: 'maxPlayers', order: 'desc'])
+    def games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc'])
 ----
 
 Next, let's just show the first group of ten results. Add `offset`/`max` parameters.
 [source,groovy]
 ----
-    def games = Game.findAllByStrategyAndMinPlayers(true, 2,
-            [sort: 'maxPlayers', order: 'desc', offset: 0, max: 10])
+    def games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc', offset: 0, max: 10])
 ----
 
 Finally, assuming a user of the application clicked the `Next` button, we can modify the
 last call to show the second group of ten results.
 [source,groovy]
 ----
-    def games = Game.findAllByStrategyAndMinPlayers(true, 2,
-            [sort: 'maxPlayers', order: 'desc', offset: 10, max: 10])
+    def games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc', offset: 10, max: 10])
 ----

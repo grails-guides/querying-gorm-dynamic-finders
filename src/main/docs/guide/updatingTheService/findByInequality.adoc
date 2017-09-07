@@ -27,11 +27,12 @@ Our improved query to find non-strategy games is then:
 ----
 include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllNotEqual]
 ----
+<1> This query demonstrates the general form of a dynamic finder using the `NotEqual` comparator.
+<2> This query demonstrates the <<simplerBooleans,exceptional form>> of dynamic finders for boolean properties.
 
-NOTE: To find non-strategy games, the shorter `findAllByStrategy(false)` is also a
-solution, but only because the property is a boolean. `NotEqual` will work equally
-well for any database types; it is used here with a boolean property simply to
-demonstrate how the comparator works.
+NOTE: Though the second form shown here is more compact and readable, the first form
+using the `NotEqual` comparator will work equally well for any database types; it is used
+here with a boolean property simply to demonstrate how the comparator works.
 
 What if we want a greater than or less than comparison? Let's look at
 `QueryService.queryGamesExpectedShorterThan`, which will return a list of

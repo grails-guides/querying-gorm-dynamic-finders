@@ -16,7 +16,11 @@ class QueryService {
 
     // tag::findAllNotEqual[]
     def queryGamesNotConsideredStrategy() {
-        Game.findAllByStrategyNotEqual(true)
+        // General case: using the NotEqual comparator.
+        Game.findAllByStrategyNotEqual(true)    // <1>
+
+        // Special case for booleans: using Boolean exceptional form.
+        Game.findAllNotStrategy()    // <2>
     }
     // end::findAllNotEqual[]
 

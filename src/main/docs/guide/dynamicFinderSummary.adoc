@@ -1,17 +1,25 @@
 == Prefixes
 
-[%header, cols="1,3", width="60%", format=csv]
+In these prefixes, `Flag` represents some Boolean property of a domain class; replace it
+with the name of the Boolean property to be tested.
+
+[%header, cols="1,3", width="75%", format=csv]
 |===
 Prefix,Purpose
 `findBy`,Find a single instance that matches the query.
 `findAllBy`,Find multiple instances that match the query.
 `countBy`,Count how many instances match the query.
+`findOrCreateBy`,Special form: creates a new instance if an existing match is not found.
+`findOrSaveBy`,Special form: creates and saves a new instance if an existing match is not found.
+`findAllFlag[By]`,Special form for boolean properties: finds all instances where named property is true. Append 'By' to extend the query.
+`findAllNotFlag[By]`,Special form for boolean properties: finds all instances where named property is false. Append 'By' to extend the query.
 |===
 
 == Comparators
 
-In the following table, `prop` represents some property of a domain instance, while
-`val` (or similar) represents the parameter value to compare against.
+In the following table, `prop` represents some property of a domain class; replace it with
+the name of the actual property to be tested. Replace `val` (or similar) with the actual
+value to compare against.
 [%header,cols="1,2,2,3"]
 |===
 |Comparator
@@ -77,12 +85,12 @@ In the following table, `prop` represents some property of a domain instance, wh
 |Tests property matches using regular expression.
 
 |`IsNull`
-|`findAllByPropIsNull`()
+|`findAllByPropIsNull()`
 |`prop == null`
 |Tests property is null. Requires no arguments.
 
 |`IsNotNull`
-|`findAllByPropIsNull`()
+|`findAllByPropIsNull()`
 |`prop != null`
 |Tests property is not null. Requires no arguments.
 |===
@@ -143,6 +151,5 @@ For example, the following finds all games with an average duration between 30 a
 with the longest (order: 'desc'), and returning only the first five
 (`offset: 0, max: 5`) results.
 ```
-    Game.findAllByAverageDurationInRange(30..90,
-            [sort: 'averageDuration', order: 'desc', offset: 0, max: 5])
+    Game.findAllByAverageDurationInRange(30..90, [sort: 'averageDuration', order: 'desc', offset: 0, max: 5])
 ```

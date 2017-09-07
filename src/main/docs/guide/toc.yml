@@ -16,4 +16,8 @@ updatingTheService:
   findInList: Find Property In List
   combinators: Combining Query Clauses
   queryParameters: Parameterizing Queries
-  dynamicFinderSummary: Summary of Dynamic Finders
+specialForms:
+  title: Convenient Exceptional Forms
+  createOrSaveBy: Query, Then Create/Save
+  simplerBooleans: Simplifying Boolean Matching
+dynamicFinderSummary: Summary of Dynamic Finders
