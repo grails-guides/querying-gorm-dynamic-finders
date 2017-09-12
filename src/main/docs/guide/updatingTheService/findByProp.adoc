@@ -5,7 +5,7 @@ of `Game` is unique.)
 
 [source,groovy]
 ----
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findByProp]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findByProp, indent=0]
 ----
 
 The `all` property on `Game` does exactly what it sounds like: it fetches all of the instances
@@ -32,7 +32,7 @@ argument to the dynamic finder method _call_; in this case, we want to use the `
 provided by the `queryGame` method. So the final, efficient implementation of `queryGame` is:
 [source,groovy]
 ----
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findByProp]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findByProp, indent=0]
 ----
 
 Change the implementation and run the tests to see that they still pass.

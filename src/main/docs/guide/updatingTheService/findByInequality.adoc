@@ -6,7 +6,7 @@ Let's look at `QueryService.queryGamesNotConsideredStrategy` which attempts to f
 games that, according to the database, are not marked as strategy games.
 [source,groovy]
 ----
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllNotEqual]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllNotEqual,indent=0]
 ----
 
 NOTE: It would be more idiomatic to write the predicate as `!it.strategy`, but for this
@@ -25,7 +25,7 @@ matches on non-equality.
 Our improved query to find non-strategy games is then:
 [source,groovy]
 ----
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllNotEqual]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllNotEqual,indent=0]
 ----
 <1> This query demonstrates the general form of a dynamic finder using the `NotEqual` comparator.
 <2> This query demonstrates the <<simplerBooleans,exceptional form>> of dynamic finders for boolean properties.
@@ -39,7 +39,7 @@ What if we want a greater than or less than comparison? Let's look at
 games with an average duration shorter than the provided value.
 [source,groovy]
 ----
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllByLessThan]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllByLessThan,indent=0]
 ----
 
 At this point, we know to start with `findAllByAverageDuration`. Since we want to
@@ -48,7 +48,7 @@ match property values that are *less than* the provided value, we should use the
 so our final, improved implementation is:
 [source,groovy]
 ----
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllByLessThan]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllByLessThan,indent=0]
 ----
 
 There is a similar comparator when you need instances with property values *greater than* the
@@ -57,13 +57,13 @@ find all games with a rating higher than the provided rating. The original imple
 
 [source,groovy]
 ----
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllByGreaterThan]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllByGreaterThan,indent=0]
 ----
 
 Our dynamic finder for this query will be called `findAllByRatingGreaterThan`.
 [source,groovy]
 ----
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllByGreaterThan]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllByGreaterThan,indent=0]
 ----
 
 The `LessThan` and `GreaterThan` comparators are _strict_ inequality comparisons; that is,
