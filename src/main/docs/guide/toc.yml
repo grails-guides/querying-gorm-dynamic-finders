@@ -1,3 +1,5 @@
+training:
+  title: Grails Training 
 gettingStarted: 
   title: Getting Started
   requirements: What you will need
@@ -20,4 +22,7 @@ specialForms:
   title: Convenient Exceptional Forms
   createOrSaveBy: Query, Then Create/Save
   simplerBooleans: Simplifying Boolean Matching
-dynamicFinderSummary: Summary of Dynamic Finders
+dynamicFinderSummary: 
+  title: Summary of Dynamic Finders
+helpWithGrails:
+  title: Do you need help with Grails?
