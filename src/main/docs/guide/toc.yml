@@ -1,3 +1,5 @@
+training:
+  title: Grails Training 
 gettingStarted: 
   title: Getting Started
   requirements: What you will need
@@ -21,4 +23,7 @@ specialForms:
   createOrSaveBy: Query, Then Create/Save
   simplerBooleans: Simplifying Boolean Matching
   chainingDCAndNQ: Chaining with Detatched Criteria and Named Queries
-dynamicFinderSummary: Summary of Dynamic Finders
+dynamicFinderSummary:
+  title: Summary of Dynamic Finders
+helpWithGrails:
+  title: Do you need help with Grails?

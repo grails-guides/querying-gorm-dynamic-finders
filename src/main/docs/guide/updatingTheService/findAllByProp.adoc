@@ -6,7 +6,7 @@ Let's update `QueryService.queryGamesWithAverageDuration`, a method used to coll
 the board games with the provided average duration. Here is the existing, inefficient implementation:
 [source,groovy]
 ----
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllByProp]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findAllByProp, indent=0]
 ----
 
 As before, this slow implementation loads all records into memory, then searches over them.
@@ -19,5 +19,5 @@ the `averageDuration` parameter from `queryGamesWithAverageDuration` as an argum
 dynamic finder method call.
 [source,groovy]
 ----
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllByProp]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findAllByProp, indent=0]
 ----

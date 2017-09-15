@@ -10,7 +10,7 @@ average play duration between 30 and 90 minutes, it might look like this:
 
 [source,groovy]
 ----
-    def games = Game.findAllByAverageDurationBetween(30, 90)
+def games = Game.findAllByAverageDurationBetween(30, 90)
 ----
 
 This guide will explore ways to build dynamic finders by updating all the methods in

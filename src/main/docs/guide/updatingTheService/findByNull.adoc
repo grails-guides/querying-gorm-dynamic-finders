@@ -4,9 +4,9 @@ service implementations, we have two methods used to find which games played are
 and which are still ongoing.
 [source,groovy]
 ----
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findByNull]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findByNull,indent=0]
 
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findByNotNull]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findByNotNull,indent=0]
 ----
 
 The comparators for checking null values are `IsNull` and `IsNotNull`. These are
@@ -15,7 +15,7 @@ improved implementation:
 
 [source,groovy]
 ----
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findByNull]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findByNull,indent=0]
 
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findByNotNull]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findByNotNull,indent=0]
 ----

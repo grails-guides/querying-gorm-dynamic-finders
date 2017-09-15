@@ -2,7 +2,7 @@ What if you need to find instances where some property falls in between two valu
 Maybe you want to know all the games played (represented by the domain class `Match`) between two dates?
 [source,groovy]
 ----
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findByBetween]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findByBetween,indent=0]
 ----
 
 Use the comparator `Between`. As mentioned earlier, most comparators expect a matching argument
@@ -20,7 +20,7 @@ find values of the property between provided lower and upper bounds. Here is the
 implementation.
 [source,groovy]
 ----
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findByBetween]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findByBetween,indent=0]
 ----
 
 A similar comparator is `InRange`, which works like `Between` but accepts a Groovy range as
@@ -28,14 +28,14 @@ the argument. As an example, we want to find out how many high scores there are 
 played games. Let's define high scores to be in the range 90-100.
 [source,groovy]
 ----
-    Range highScore = 90..100
-    def numHighScores = queryService.queryHowManyScoresWithinRange(highScore)
+Range highScore = 90..100
+def numHighScores = queryService.queryHowManyScoresWithinRange(highScore)
 ----
 
 Here's the old, inefficient implementation of `queryHowManyScoresWithinRange`:
 [source,groovy]
 ----
-include::initial/grails-app/services/demo/QueryService.groovy[tag=findByRange]
+include::initial/grails-app/services/demo/QueryService.groovy[tag=findByRange,indent=0]
 ----
 
 Since we only want to know how many high scores there are (and not the scores themselves),
@@ -44,5 +44,5 @@ domain class, and we'll use `InRange` to compare against the provided range. Her
 the improved implementation.
 [source,groovy]
 ----
-include::complete/grails-app/services/demo/QueryService.groovy[tag=findByRange]
+include::complete/grails-app/services/demo/QueryService.groovy[tag=findByRange,indent=0]
 ----
