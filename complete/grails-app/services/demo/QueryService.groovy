@@ -1,5 +1,7 @@
 package demo
 
+import grails.gorm.DetachedCriteria
+
 class QueryService {
 
     // tag::findByProp[]
@@ -119,5 +121,27 @@ class QueryService {
         Game.findAllByFamilyOrParty(true, true)
     }
 	// end::findCombinatorOr[]
+
+    // tag::namedQueryChaining[]
+    def queryGamesWithMechanicNoLongerThanDuration(Mechanic mechanic, int duration) {
+        // Games provides a named query, 'gamesWithMechanic', to find all games that employ the provided game mechanic.
+        // Dynamic finders can be chained onto named queries to narrow the results.
+        Game.gamesWithMechanic(mechanic).findAllByAverageDurationLessThan(duration)
+    }
+    // end::namedQueryChaining[]
+
+    // tag::detachedCriteriaChaining[]
+    def queryGamesInCategoryWithAverageDuration(Category category, int duration) {
+        // Here is a detached criteria to find all games within the specific category.
+        def detachedCriteria = new DetachedCriteria(Game).build {
+            categories {
+                eq 'id', category.id
+            }
+        }
+
+        // Dynamic finders can be chained onto detached criteria to narrow the results.
+        detachedCriteria.findAllByAverageDuration(duration)
+    }
+    // end::detachedCriteriaChaining[]
 
 }

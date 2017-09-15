@@ -234,4 +234,25 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
         areEqualSets unownedGames*.name, ["Metro", "Tournay"]
     }
 
+    def 'test what hand management games are under 45 minutes on average'() {
+        given:
+        def mechanic = Mechanic.findByName('Hand Management')
+
+        when:
+        def games = service.queryGamesWithMechanicNoLongerThanDuration(mechanic, 45)
+
+        then:
+        areEqualSets games*.name, ["Dominion", "Lost Cities", "Odin's Ravens"]
+    }
+
+    def 'test what economic games are 120 minutes on average'() {
+        given:
+        def category = Category.findByName('Economic')
+
+        when:
+        def games = service.queryGamesInCategoryWithAverageDuration(category, 120)
+
+        then:
+        areEqualSets games*.name, ["Power Grid", "Gloomhaven"]
+    }
 }

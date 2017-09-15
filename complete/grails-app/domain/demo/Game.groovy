@@ -21,4 +21,13 @@ class Game {
         rating min: 0.0, max: 10.0
     }
 
+    // tag::gameNamedQueries[]
+    static namedQueries = {
+        gamesWithMechanic { aMechanic ->
+            mechanics {
+                eq 'id', aMechanic.id
+            }
+        }
+    }
+    // end::gameNamedQueries[]
 }

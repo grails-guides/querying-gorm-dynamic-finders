@@ -20,4 +20,5 @@ specialForms:
   title: Convenient Exceptional Forms
   createOrSaveBy: Query, Then Create/Save
   simplerBooleans: Simplifying Boolean Matching
+  chainingDCAndNQ: Chaining with Detatched Criteria and Named Queries
 dynamicFinderSummary: Summary of Dynamic Finders
