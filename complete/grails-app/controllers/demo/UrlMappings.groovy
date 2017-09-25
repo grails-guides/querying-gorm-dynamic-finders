@@ -1,4 +1,4 @@
-package querying.gorm.dynamic.finders
+package demo
 
 class UrlMappings {
 
