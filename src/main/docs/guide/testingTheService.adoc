@@ -22,8 +22,8 @@ Starting a Gradle Daemon (subsequent builds will be faster)
 BUILD SUCCESSFUL
 ----
 
-The above is what you should see if all the unit tests pass. A full HTML report
-can be found at `initial/build/reports/tests/test/index.html`.
+The above is what you should see if all the unit tests pass. A full HTML report can be found at +
+`initial/build/reports/tests/test/index.html`.
 
 If you make changes to the service that cause the unit tests to fail, you will
 see output like this:
