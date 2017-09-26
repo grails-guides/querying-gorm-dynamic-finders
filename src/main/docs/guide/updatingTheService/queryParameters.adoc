@@ -46,7 +46,7 @@ last call to show the next group of ten results by updating the `offset` value.
 
 Finally, as was noted <<findByProp,earlier>>, the prefix `findBy` will return the first matching
 result of a query. For robust code, you should consider adding a `sort` parameter, or even replacing
-`findBy` with `findByAll` and using `max: 1` in your parameters. For example:
+`findBy` with `findAllBy` and using `max: 1` in your parameters. For example:
 [source,groovy]
 ----
     // This:
