@@ -56,7 +56,7 @@ result of a query. For robust code, you should consider adding a `sort` paramete
     def bestTwoPlayerGame = Game.findAllByMinPlayerAndMaxPlayer(2, 2, [sort: 'rating', order: 'desc', max: 1])
 ----
 
-NOTE: There are a few parameters more parameters available than are listed here. Please
+NOTE: There are a few more parameters available than are listed here. Please
 refer to the documentation for
 http://docs.grails.org/latest/ref/Domain%20Classes/list.html[`list`] to see if they
 apply to your situation.
