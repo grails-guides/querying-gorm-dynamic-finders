@@ -38,7 +38,7 @@ for example, to find all of the scores by a particular player:
 
 Related to the `InList` comparator is the `NotInList` comparator which, as it sounds, finds
 matching instances where the property under test is *not* found in the provided list. So, for
-the inefficient implementation of `QueryService.quequeryGamesOtherThan`:
+the inefficient implementation of `QueryService.queryGamesOtherThan`:
 [source,groovy]
 ----
 include::initial/grails-app/services/demo/QueryService.groovy[tag=findNotInList]
