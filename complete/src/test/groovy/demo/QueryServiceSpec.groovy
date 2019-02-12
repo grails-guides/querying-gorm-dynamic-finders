@@ -5,6 +5,9 @@ import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import java.time.LocalDate
+import java.time.ZoneId
+
 class QueryServiceSpec extends Specification implements ServiceUnitTest<QueryService>, DataTest {
 
     void setupSpec() {
@@ -197,7 +200,8 @@ class QueryServiceSpec extends Specification implements ServiceUnitTest<QuerySer
 
         and: 'get the dates on which the match started'
         def startDates = matches*.started.collect { Date dt ->
-            dt.toCalendar().get(Calendar.DAY_OF_MONTH)
+            LocalDate localDate = dt.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+            localDate.getDayOfMonth()
         }
 
         then:
