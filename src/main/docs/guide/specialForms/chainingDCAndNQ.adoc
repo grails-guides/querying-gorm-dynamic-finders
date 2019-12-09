@@ -12,7 +12,7 @@ http://docs.grails.org/latest/ref/Domain%20Classes/namedQueries.html[Named Query
 include::complete/grails-app/domain/demo/Game.groovy[tag=gameNamedQueries]
 
     // Find all games using the "Hand Management" game mechanic.
-    def m = Mechanic.findByName("Hand Management")
+    Mechanic m = Mechanic.findByName("Hand Management")
     def games = Game.gamesWithMechanic(m)
 ----
 

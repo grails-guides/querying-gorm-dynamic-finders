@@ -11,14 +11,14 @@ to search for these things independently. For example, to find where the minimum
 players is no higher than the requested player count, we would do this:
 [source,groovy]
 ----
-    def games = Game.findAllByMinPlayersLessThanEqual(playerCount)
+    List<Game> games = Game.findAllByMinPlayersLessThanEqual(playerCount)
 ----
 
 Or to find those games where the maximum number of players is no less than the requested
 player count, we would do this:
 [source,groovy]
 ----
-    def games = Game.findAllByMaxPlayersGreaterThanEqual(playerCount)
+    List<Game> games = Game.findAllByMaxPlayersGreaterThanEqual(playerCount)
 ----
 
 Because `minPlayers` and `maxPlayers` are different properties, we can't use the `Between`

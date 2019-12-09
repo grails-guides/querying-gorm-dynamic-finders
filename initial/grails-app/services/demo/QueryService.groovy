@@ -1,11 +1,13 @@
 package demo
 
+import grails.gorm.transactions.ReadOnly
 import org.apache.commons.lang.StringUtils
 
+@ReadOnly
 class QueryService {
 
     // tag::findByProp[]
-    def queryGame(String name) {
+    Game queryGame(String name) {
         Game.all.find {
             it.name == name
         }
@@ -13,7 +15,7 @@ class QueryService {
     // end::findByProp[]
 
     // tag::findAllByProp[]
-    def queryGamesWithAverageDuration(Integer averageDuration) {
+    List<Game> queryGamesWithAverageDuration(Integer averageDuration) {
         Game.all.findAll {
             it.averageDuration == averageDuration
         }
@@ -21,7 +23,7 @@ class QueryService {
     // end::findAllByProp[]
 
     // tag::findAllNotEqual[]
-    def queryGamesNotConsideredStrategy() {
+    List<Game> queryGamesNotConsideredStrategy() {
         Game.all.findAll {
             it.strategy != true
         }
@@ -29,7 +31,7 @@ class QueryService {
     // end::findAllNotEqual[]
 
     // tag::findAllByLessThan[]
-    def queryGamesExpectedShorterThan(Integer duration) {
+    List<Game> queryGamesExpectedShorterThan(Integer duration) {
         Game.all.findAll {
             it.averageDuration < duration
         }
@@ -37,7 +39,7 @@ class QueryService {
     // end::findAllByLessThan[]
 
     // tag::findAllByGreaterThan[]
-    def queryGamesRatedMoreThan(BigDecimal rating) {
+    List<Game> queryGamesRatedMoreThan(BigDecimal rating) {
         Game.all.findAll {
             it.rating > rating
         }
@@ -45,7 +47,7 @@ class QueryService {
     // end::findAllByGreaterThan[]
 
     // tag::countByGreaterThan[]
-    def queryHowManyGamesRatedAtLeast(BigDecimal rating) {
+    int queryHowManyGamesRatedAtLeast(BigDecimal rating) {
         Game.all.count {
             it.rating >= rating
         }
@@ -53,7 +55,7 @@ class QueryService {
     // end::countByGreaterThan[]
 
     // tag::findByBetween[]
-    def queryMatchesPlayedBetweenDates(Date startDate, Date finishDate) {
+    List<Game> queryMatchesPlayedBetweenDates(Date startDate, Date finishDate) {
         Match.all.findAll {
             startDate <= it.started && it.started <= finishDate
         }
@@ -61,7 +63,7 @@ class QueryService {
     // end::findByBetween[]
 
     // tag::findByRange[]
-    def queryHowManyScoresWithinRange(Range range) {
+    int queryHowManyScoresWithinRange(Range range) {
         Score.all.count {
             it.score in range
         }
@@ -69,7 +71,7 @@ class QueryService {
     // end::findByRange[]
 
     // tag::findByLike[]
-    def queryPlayersWithLastName(String lastName) {
+    List<Game> queryPlayersWithLastName(String lastName) {
         Player.all.findAll {
             it.name.endsWith " ${lastName}"
         }
@@ -77,7 +79,7 @@ class QueryService {
     // end::findByLike[]
 
     // tag::findByIlike[]
-    def queryMechanicsContaining(String text) {
+    List<Game> queryMechanicsContaining(String text) {
         Mechanic.all.findAll {
             StringUtils.containsIgnoreCase it.name, text
         }
@@ -85,7 +87,7 @@ class QueryService {
     // end::findByIlike[]
 
     // tag::findByRlike[]
-    def queryGamesMatching(String pattern) {
+    List<Game> queryGamesMatching(String pattern) {
         Game.all.findAll {
             it.name ==~ pattern
         }
@@ -93,7 +95,7 @@ class QueryService {
     // end::findByRlike[]
 
     // tag::findByNull[]
-    def queryHowManyMatchesInProgress() {
+    int queryHowManyMatchesInProgress() {
         Match.all.count {
             it.finished == null
         }
@@ -101,7 +103,7 @@ class QueryService {
     // end::findByNull[]
 
     // tag::findByNotNull[]
-    def queryHowManyMatchesCompleted() {
+    int queryHowManyMatchesCompleted() {
         Match.all.count {
             it.finished != null
         }
@@ -109,7 +111,7 @@ class QueryService {
     // end::findByNotNull[]
 
     // tag::findStringInList[]
-    def queryGamesForNames(List<String> names) {
+    List<Game> queryGamesForNames(List<String> names) {
         Game.all.findAll {
             it.name in names
         }
@@ -117,7 +119,7 @@ class QueryService {
     // end::findStringInList[]
 
     // tag::findDomainInList[]
-    def queryMatchesForGames(List<Game> games) {
+    List<Game> queryMatchesForGames(List<Game> games) {
         Match.all.findAll {
             it.game in games
         }
@@ -125,7 +127,7 @@ class QueryService {
     // end::findDomainInList[]
 
     // tag::findNotInList[]
-    def queryGamesOtherThan(List<Game> games) {
+    List<Game> queryGamesOtherThan(List<Game> games) {
         Game.all.findAll {
             !(it in games)
         }
@@ -133,7 +135,7 @@ class QueryService {
     // end::findNotInList[]
 
     // tag::findCombinatorAnd[]
-    def queryHowManyGamesSupportPlayerCount(Integer playerCount) {
+    int queryHowManyGamesSupportPlayerCount(Integer playerCount) {
         Game.all.count {
             it.minPlayers <= playerCount && playerCount <= it.maxPlayers
         }
@@ -141,7 +143,7 @@ class QueryService {
     // end::findCombinatorAnd[]
 
     // tag::findCombinatorAnd2[]
-    def queryGamesSupportExactPlayerCount(Integer playerCount) {
+    List<Game> queryGamesSupportExactPlayerCount(Integer playerCount) {
         Game.all.findAll {
             it.minPlayers == playerCount && it.maxPlayers == playerCount
         }
@@ -149,7 +151,7 @@ class QueryService {
     // end::findCombinatorAnd2[]
 
     // tag::findCombinatorOr[]
-    def queryGamesConsideredFamilyOrParty() {
+    List<Game> queryGamesConsideredFamilyOrParty() {
         Game.all.findAll {
             it.family || it.party
         }
