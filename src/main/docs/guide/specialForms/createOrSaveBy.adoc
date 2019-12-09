@@ -25,9 +25,9 @@ a new instance is created and its properties set with the query-named property v
 above:
 [source,groovy]
 ----
-    def category = Category.findOrSaveByName('Zombies')
+    Category category = Category.findOrSaveByName('Zombies')
 
-    def game = Game.findOrCreateByNameAndMinPlayersAndMaxPlayers('SET', 2, 20)
+    Game game = Game.findOrCreateByNameAndMinPlayersAndMaxPlayers('SET', 2, 20)
 ----
 
 Often, `findOrCreateBy` may be more appropriate, if you need to fill in additional properties,

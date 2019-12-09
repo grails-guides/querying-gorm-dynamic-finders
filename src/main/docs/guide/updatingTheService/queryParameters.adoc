@@ -20,7 +20,7 @@ Pagination parameters are applied *after* sorting parameters.
 As an example, let's say I want to find all strategy games supporting at least two players.
 [source,groovy]
 ----
-    def games = Game.findAllByStrategyAndMinPlayers(true, 2)
+    List<Game> games = Game.findAllByStrategyAndMinPlayers(true, 2)
 ----
 
 Now let's modify that to order the results, showing first the games supporting the highest
@@ -28,20 +28,20 @@ maximum number of players. Since we're changing the ordering (and not the condit
 included in the results), we add `sort`/`order` query parameters.
 [source,groovy]
 ----
-    def games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc'])
+    List<Game> games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc'])
 ----
 
 Next, let's just show the first group of ten results. Add `offset`/`max` parameters.
 [source,groovy]
 ----
-    def games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc', offset: 0, max: 10])
+    List<Game> games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc', offset: 0, max: 10])
 ----
 
 Assuming a user of the application clicked the `Next` button, we can modify the
 last call to show the next group of ten results by updating the `offset` value.
 [source,groovy]
 ----
-    def games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc', offset: 10, max: 10])
+    List<Game> games = Game.findAllByStrategyAndMinPlayers(true, 2, [sort: 'maxPlayers', order: 'desc', offset: 10, max: 10])
 ----
 
 Finally, as was noted <<findByProp,earlier>>, the prefix `findBy` will return the first matching
@@ -50,10 +50,10 @@ result of a query. For robust code, you should consider adding a `sort` paramete
 [source,groovy]
 ----
     // This:
-    def bestTwoPlayerGame = Game.findByMinPlayerAndMaxPlayer(2, 2, [sort: 'rating', order: 'desc'])
+    Game bestTwoPlayerGame = Game.findByMinPlayerAndMaxPlayer(2, 2, [sort: 'rating', order: 'desc'])
 
     // is equivalent to this:
-    def bestTwoPlayerGame = Game.findAllByMinPlayerAndMaxPlayer(2, 2, [sort: 'rating', order: 'desc', max: 1])
+    List<Game> bestTwoPlayerGame = Game.findAllByMinPlayerAndMaxPlayer(2, 2, [sort: 'rating', order: 'desc', max: 1])
 ----
 
 NOTE: There are a few more parameters available than are listed here. Please
